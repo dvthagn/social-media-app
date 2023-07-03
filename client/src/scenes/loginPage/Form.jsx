@@ -55,6 +55,7 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
+    // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -68,10 +69,10 @@ const Form = () => {
         body: formData,
       }
     );
-    const saveduser = await savedUserResponse.json();
+    const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
-    if (saveduser) {
+    if (savedUser) {
       setPageType("login");
     }
   };
